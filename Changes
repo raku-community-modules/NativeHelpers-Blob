@@ -1,4 +1,6 @@
 Revision history for NativeHelpers::Blob
 
 {{$NEXT}}
+
+0.1.12  2026-06-17T18:15:38+02:00
     - Initial version as a Raku Community module

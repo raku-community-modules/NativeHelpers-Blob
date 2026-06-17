@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/raku-community-modules/NativeHelpers-Blob/actions/workflows/linux.yml/badge.svg)](https://github.com/raku-community-modules/NativeHelpers-Blob/actions) [![Actions Status](https://github.com/raku-community-modules/NativeHelpers-Blob/actions/workflows/macos.yml/badge.svg)](https://github.com/raku-community-modules/NativeHelpers-Blob/actions) [![Actions Status](https://github.com/raku-community-modules/NativeHelpers-Blob/actions/workflows/windows.yml/badge.svg)](https://github.com/raku-community-modules/NativeHelpers-Blob/actions)
+[![Actions Status](https://github.com/raku-community-modules/NativeHelpers-Blob/actions/workflows/linux.yml/badge.svg)](https://github.com/raku-community-modules/NativeHelpers-Blob/actions) [![Actions Status](https://github.com/raku-community-modules/NativeHelpers-Blob/actions/workflows/macos.yml/badge.svg)](https://github.com/raku-community-modules/NativeHelpers-Blob/actions)
 
 NAME
 ====
@@ -60,8 +60,10 @@ When the `CArray` is unmanaged, for example as returned by a native call functio
 
 The type of the `Blob` is determined by the type of the `CArray`.
 
-WARNING This module depends on internal details of the REPRs of the involved types in MoarVM, so it can stop working without notice.
-====================================================================================================================================
+WARNING
+=======
+
+This module depends on internal details of the REPRs of the involved types in MoarVM, so it can stop working without notice.
 
 In the same way as when handling pointers in C, you should known what are you doing.
 

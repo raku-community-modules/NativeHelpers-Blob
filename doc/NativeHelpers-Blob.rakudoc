@@ -74,6 +74,7 @@ should include de `:size` argument.
 The type of the `Blob` is determined by the type of the `CArray`.
 
 =head1 WARNING
+
 This module depends on internal details of the REPRs of the involved
 types in MoarVM, so it can stop working without notice.
 
