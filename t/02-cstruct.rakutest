@@ -1,16 +1,13 @@
-use v6;
-use lib './t';
 use Test;
 use NativeCall;
 use NativeHelpers::Pointer;
 use NativeHelpers::Blob;
+
+plan 34;
+
+use lib $*PROGRAM.parent;
 use CompileTestLib;
-
-plan 35;
-
 compile_test_lib('02-cstruct');
-
-use-ok 'NativeHelpers::CStruct';
 
 use NativeHelpers::CStruct;
 
@@ -87,7 +84,7 @@ for ^10 -> $base {
     }
 }
 ok $ok,                                                 'Elements in blob match';
-#diag $blob.perl;
+#diag $blob.raku;
 
 # Test via pointer arithmetic
 $tp = $la.Pointer(:typed);
@@ -120,3 +117,5 @@ isnt $lum[3], $la[3],                                      'but no the same obj'
 ok $lum.dispose,                                             'Dispose unmanaged';
 ok $la.dispose,                                                    'Can dispose';
 is $la.elems, 0,                                                  'Now is empty';
+
+# vim: expandtab shiftwidth=4

@@ -1,4 +1,3 @@
-use v6;
 use Bench;
 use NativeHelpers::Blob;
 use NativeCall;
@@ -38,4 +37,4 @@ my %tests = (
 
 $b.timethese(1000, %tests);
 
-# vim: ft=perl6:sw=4:st=4
+# vim: expandtab shiftwidth=4

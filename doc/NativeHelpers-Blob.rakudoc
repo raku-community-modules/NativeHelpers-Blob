@@ -1,0 +1,98 @@
+=begin pod
+
+=head1 NAME
+
+NativeHelpers::Blob - NativeCall utilities for work with Blob and CArray
+
+=head1 SYNOPSIS
+
+=begin code :lang<raku>
+use NativeHelpers::Blob;
+=end code
+
+=head1 DESCRIPTION
+
+The C<NativeHelpers::Blob> distribution provides a number of subroutines
+that help in converting native data-structures to Raku objects, and
+vice-versa.
+
+Right now the support for C<Blob> / C<Buf> in Raku's C<NativeCall>
+is incomplete.  You can use these as arguments for native functions,
+but not as attributes for C<CStruct> or C<CUnion>, for example.
+
+In a C<CStruct> class, you can use a C<Pointer> or a C<CArray>, but
+those don't have the flexibility of a C<Blob> or C<Buf>, moving data
+between them is slow, and with big buffers the memory required
+increases dramatically.
+
+At some point, these problems will be addressed in core, but in the
+meantime...
+
+=head1 EXPORTED SUBROUTINES
+
+=head2 pointer-to(positional, :$typed --> Pointer)
+
+Returns a C<Pointer> to the contents of the given C<Blob> or (native)
+C<Array>.
+
+The type of the returned C<Pointer> will be the same of the C<Blob>
+if the named argument C<:typed> was specified with a true value, or
+C<void> if not.
+
+Should be noted that the memory is owned by Rakudo, so you must B<not>
+attempt to free it.
+
+=head2 carray-from-blob(Blob:D, :$managed --> CArray)
+
+Returns a C<CArray> constructed from de contents of the given C<Blob>.
+
+If the named argument C<:managed> was specified with a true value, the
+returned C<CArray> contains a copy of the original content of the
+C<Blob> and will be managed, otherwise the C<CArray> holds a reference
+to the C<Blob> content.
+
+=head2 blob-from-pointer(Pointer:D, :$elems!, Blob:U :$type = Buf --> Blob)
+
+Returns a C<Blob> of the type indicated with the named argument C<:type>
+(defaults to C<Buf>) constructed from the memory pointed by the given
+C<Pointer> and the required named argument C<:elems> to indicate the
+number of elements.
+
+The type of the C<Pointer> should be compatible with the type of the
+C<Blob>.
+
+Please note that the amount of memory copied depends of C<$elems> B<and>
+C<:type>´s native size.
+
+=head2 blob-from-carray(CArray:D, :$size --> Blob)
+
+Returns a `Blob` constructed from the contents of the `CArray`.
+
+When the `CArray` is unmanaged, for example as returned by a native call function, you
+should include de `:size` argument.
+
+The type of the `Blob` is determined by the type of the `CArray`.
+
+=head1 WARNING
+This module depends on internal details of the REPRs of the involved
+types in MoarVM, so it can stop working without notice.
+
+In the same way as when handling pointers in C, you should known what
+are you doing.
+
+=head1 AUTHORS
+
+=item Salvador Ortiz
+=item Raku Community
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2016 - 2019 by Salvador Ortiz
+
+Copyright 2026 Raku Community
+
+This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
+
+=end pod
+
+# vim: expandtab shiftwidth=4

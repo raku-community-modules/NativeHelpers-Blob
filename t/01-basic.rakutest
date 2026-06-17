@@ -1,10 +1,7 @@
-use v6;
 use Test;
 use NativeCall;
 
-plan 24;
-
-use-ok 'NativeHelpers::Blob';
+plan 23;
 
 use NativeHelpers::Blob;
 #$NativeHelpers::Blob::debug = True;
@@ -47,3 +44,5 @@ isa-ok $ps[0], Pointer,			'first isa Pointer';
 isa-ok $ps[1], Int,			'Second isa Int';
 
 is utf8-from-pointer(|$ps), $a,		'utf8-f-p works';
+
+# vim: expandtab shiftwidth=4

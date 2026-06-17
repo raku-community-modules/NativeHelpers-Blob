@@ -1,2 +1,4 @@
 *.swp
+/NativeHelpers-Blob-*
 .precomp
+*.rakucov
