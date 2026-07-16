@@ -1,4 +1,4 @@
-unit module NativeHelpers::Blob:ver<0.1.12>;
+unit module NativeHelpers::Blob:ver<0.1.13>;
 
 use NativeCall;
 use MoarVM::Guts::REPRs;
